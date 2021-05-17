@@ -27,5 +27,16 @@
             app:argType="string"
             app:nullable="true"
             android:defaultValue="NO_NAME" />
+        <action
+            android:id="@+id/actionCalculadoraTorecibirDinero"
+            app:destination="@id/recibirDineroFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/recibirDineroFragment"
+        android:name="com.example.adriiscolsubsidioapp.dinero.RecibirDineroFragment"
+        android:label="RecibirDineroFragment">
+        <argument
+            android:name="recibirdinero"
+            app:argType="long" />
     </fragment>
 </navigation>

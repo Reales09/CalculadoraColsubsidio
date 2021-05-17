@@ -9,13 +9,13 @@ class CalculadoraModel : ViewModel() {
     var money:Double=0.0
     var numPerso:Double=0.0
     var totalValTodos:Double=0.0
-    var totalDefi:Double=0.0
     var numHijos:Double=0.0
+    var totalDefi:Double=0.0
 
 
-    fun cadaUno(){
-        totalValTodos=money/numPerso
-    }
+
+
+
 
 
 

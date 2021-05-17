@@ -10,10 +10,11 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.adriiscolsubsidioapp.R
 import com.example.adriiscolsubsidioapp.databinding.FragmentCalculadoraBinding
-
+import com.example.adriiscolsubsidioapp.screen.TittleFragmentDirections
 
 
 class CalculadoraFragment : Fragment() {
@@ -66,6 +67,11 @@ if (binding.idDinero.text.isEmpty() || binding.editNumPerso.text.isEmpty() || bi
     viewModel.numHijos=binding.idNumHijos.text.toString().toDouble()
     viewModel.totalDefi = viewModel.totalValTodos * viewModel.numHijos
     binding.idResultado.text = "${args.nombre} Recibiras un valor de: ${viewModel.totalDefi}"
+
+    val action = CalculadoraFragmentDirections.actionCalculadoraTorecibirDinero()
+    action.re
+    
+
 }
 
         }
@@ -75,16 +81,6 @@ if (binding.idDinero.text.isEmpty() || binding.editNumPerso.text.isEmpty() || bi
 
 
     }
-
-
-
-
-    private fun divValorTodos(){
-
-        binding.idRecibTodos.text="Papis cada uno recibe ${viewModel.totalValTodos}"
-
-    }
-
 
 }
 
