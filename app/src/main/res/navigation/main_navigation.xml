@@ -35,8 +35,12 @@
         android:id="@+id/recibirDineroFragment"
         android:name="com.example.adriiscolsubsidioapp.dinero.RecibirDineroFragment"
         android:label="RecibirDineroFragment">
+        <action
+            android:id="@+id/action_recibirDineroFragment_to_calculadoraFragment"
+            app:destination="@id/calculadoraFragment" />
         <argument
-            android:name="recibirdinero"
-            app:argType="long" />
+            android:name="recibir"
+            app:argType="long"
+            android:defaultValue="0L" />
     </fragment>
 </navigation>

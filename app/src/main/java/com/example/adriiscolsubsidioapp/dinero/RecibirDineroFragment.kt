@@ -11,12 +11,10 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.adriiscolsubsidioapp.R
 import com.example.adriiscolsubsidioapp.databinding.FragmentRecibirDineroBinding
 
+lateinit var viewModel: RecibirDineroModel
+lateinit var viewModelFactory: ReciterDinerModelFactory
+
 class RecibirDineroFragment : Fragment() {
-
-    lateinit var viewModel: RecibirDineroModel
-    lateinit var viewModelFactory: ReciterDinerModelFactory
-
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,15 +26,13 @@ class RecibirDineroFragment : Fragment() {
             R.layout.fragment_recibir_dinero, container,
             false)
 
-
-
-        viewModelFactory = ReciterDinerModelFactory(RecibirDineroFragmentArgs.fromBundle(requireArguments()).recibirdinero)
+        viewModelFactory = ReciterDinerModelFactory(RecibirDineroFragmentArgs.fromBundle(requireArguments()).recibir)
         viewModel = ViewModelProvider(this, viewModelFactory)
             .get(RecibirDineroModel::class.java)
 
 
 
-        binding.recibirDinero.text = viewModel.totalDefi.toString()
+        binding.recibirDinero.text = viewModel.recibir.toString()
 
         return binding.root
 
