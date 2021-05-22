@@ -7,12 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.navArgs
 
 import com.example.adriiscolsubsidioapp.R
+import com.example.adriiscolsubsidioapp.calculadora.CalculadoraFragmentArgs
 import com.example.adriiscolsubsidioapp.databinding.FragmentRecibirDineroBinding
 
 lateinit var viewModel: RecibirDineroModel
 lateinit var viewModelFactory: ReciterDinerModelFactory
+
+
 
 class RecibirDineroFragment : Fragment() {
 
@@ -31,8 +35,7 @@ class RecibirDineroFragment : Fragment() {
             .get(RecibirDineroModel::class.java)
 
 
-
-        binding.recibirDinero.text = viewModel.recibir.toString()
+        binding.recibirDinero.text = "Recibiras el valor de ${viewModel.recibir}"
 
         return binding.root
 

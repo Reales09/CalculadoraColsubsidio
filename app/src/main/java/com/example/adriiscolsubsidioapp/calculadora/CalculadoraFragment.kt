@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
@@ -15,12 +16,15 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.adriiscolsubsidioapp.R
 import com.example.adriiscolsubsidioapp.databinding.FragmentCalculadoraBinding
+import com.example.adriiscolsubsidioapp.dinero.RecibirDineroFragment
+import com.example.adriiscolsubsidioapp.dinero.RecibirDineroFragmentArgs
 import com.example.adriiscolsubsidioapp.screen.TittleFragmentDirections
 
 
 class CalculadoraFragment : Fragment() {
 
     private val args: CalculadoraFragmentArgs by navArgs()
+
     private lateinit var binding: FragmentCalculadoraBinding
     private lateinit var viewModel: CalculadoraModel
 
@@ -61,14 +65,23 @@ if (binding.idDinero.text.isEmpty() || binding.editNumPerso.text.isEmpty() || bi
 }else {
     viewModel.money.value=binding.idDinero.text.toString().toLong()
     viewModel.numPerso.value= (binding.editNumPerso.text.toString()).toLong()
-    viewModel.totalValTodos.value = (viewModel.money.value?:0 / viewModel.numPerso.value!!)
+    viewModel.totalValTodos.value = (viewModel.money.value!! / viewModel.numPerso.value!!)
 
-    binding.idRecibTodos.text="R ${viewModel.totalValTodos.value}"
+    viewModel.totalValTodos.observe(viewLifecycleOwner, Observer {  totalDefinitivo ->
+        binding.idRecibTodos.text="R ${viewModel.totalValTodos.value}"
+    })
+
 
     viewModel.numHijos.value=binding.idNumHijos.text.toString().toLong()
     viewModel.totaldefi.value = viewModel.totalValTodos.value!! * viewModel.numHijos.value!!
-    binding.idResultado.text = "${args.nombre} Recibiras un valor de: ${viewModel.totaldefi.value}"
 
+    viewModel.totaldefi.observe(viewLifecycleOwner, Observer {  totalDefinitivo ->
+        binding.idResultado.text = "${args.nombre} Recibiras un valor de: ${viewModel.totaldefi.value}"
+    })
+/*
+    val action = CalculadoraFragmentDirections.actionCalculadoraTorecibirDinero(viewModel.totaldefi.value!!)
+    findNavController().navigate(action)
+ */
 
 }
         }
